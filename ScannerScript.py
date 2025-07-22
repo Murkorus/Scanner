@@ -1,7 +1,11 @@
 from gpiozero import DistanceSensor
+from gpiozero import PiGPIOFactory
 import pyautogui
 import time
-ultrasonic = DistanceSensor(echo = 22, trigger = 17, threshold_distance = 0.6, max_distance = 1)
+
+factory = PiGPIOFactory()
+
+ultrasonic = DistanceSensor(echo = 17, trigger = 22, threshold_distance = 0.6, max_distance = 1, pin_factory = factory)
 while True:
     ultrasonic.wait_for_in_range()
     print("In range")
