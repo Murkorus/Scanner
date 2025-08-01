@@ -14,4 +14,3 @@ while True:
     ultrasonic.wait_for_out_of_range()
     print("Out of range")
     print(ultrasonic.distance * 100)
-
