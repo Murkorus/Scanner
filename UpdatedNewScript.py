@@ -24,7 +24,7 @@ try:
             try:
                 distance_cm = sensor.distance * 100
                 if distance_cm >= THRESHOLD_CM:
-                    print("Object removed – waiting for the next object...")
+                    print("Object removed - waiting for the next object...")
                     break
             except OSError:
                 print("No echo recieved, trying again...")
