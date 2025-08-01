@@ -1,5 +1,6 @@
 from gpiozero.pins.pigpio import PiGPIOFactory
 from gpiozero import DistanceSensor
+import pyautogui
 from time import sleep
 
 factory = PiGPIOFactory()
@@ -16,6 +17,7 @@ try:
                 distance_cm = sensor.distance * 100
                 if distance_cm < THRESHOLD_CM:
                     print(f"Object is: {distance_cm:.1f} cm away")
+                    pyautogui.click(240,400)
                     break
             except OSError:
                 print("No echo recieved, trying again...")
