@@ -1,7 +1,9 @@
+from gpiozero.pins.pigpio import PiGPIOFactory
 from gpiozero import DistanceSensor
 from time import sleep
 
-sensor = DistanceSensor(echo=24, trigger=22, threshold_distance = 0.6, max_distance = 1)
+factory = PiGPIOFactory()
+sensor = DistanceSensor(echo=24, trigger=22, threshold_distance = 0.6, max_distance = 1, pin_factory=factory)
 THRESHOLD_CM = 60.0
 
 print("Starting sensor loop...")
