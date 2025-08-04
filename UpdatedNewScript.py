@@ -6,6 +6,7 @@ from time import sleep
 factory = PiGPIOFactory()
 sensor = DistanceSensor(echo=24, trigger=22, threshold_distance = 0.6, max_distance = 1, pin_factory=factory)
 THRESHOLD_CM = 60.0
+clickWaitTime = 0.5
 
 print("Starting sensor loop...")
 
@@ -16,7 +17,8 @@ try:
             try:
                 distance_cm = sensor.distance * 100
                 if distance_cm < THRESHOLD_CM:
-                    print(f"Object is: {distance_cm:.1f} cm away")
+                    print(f"Object is: {distance_cm:.1f} cm away. Clicking in {clickWaitTime} seconds.")
+                    sleep(clickWaitTime)
                     pyautogui.click(240,400)
                     break
             except OSError:
