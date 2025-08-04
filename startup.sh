@@ -18,7 +18,7 @@ xdotool key k
 sleep 3
 
 # Close original website window again so the camera can be used
-xdotool mousemove 479 54 click 1
+xdotool mousemove 456 50 click 1
 sleep 2
 
 # Make the popup window fullscreen
