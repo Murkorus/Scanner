@@ -13,7 +13,7 @@ python /home/pi/Scanner/backgroundScript.py &
 sleep 5
 
 # Launch the website
-chromium-browser --start-fullscreen --app=https://sorter.noelg.dk/scanner &
+chromium-browser --no-sandbox --start-fullscreen --app=https://sorter.noelg.dk/scanner &
 
 # Wait a bit to make sure the website has booted up
 sleep 8
@@ -27,4 +27,4 @@ xdotool mousemove 479 54 click 1
 sleep 2
 
 # Make the popup window fullscreen
-xdotool key f11
+xdotool key F11
