@@ -5,10 +5,11 @@ source /home/pi/PyVenv/bin/activate
 python /home/pi/Scanner/backgroundScript.py &
 
 # Wait a bit to make sure everything has started
+until ping -c1 google.com &>/dev/null; do sleep 1; done
 sleep 5
 
 # Launch the website
-chromium-browser --no-sandbox --disable-gpu --disable-software-rasterizer --start --app=https://sorter.noelg.dk/scanner &
+chromium-browser --no-sandbox --disable-gpu --disable-software-rasterizer --disable-extensions --disable-sync --start --app=https://sorter.noelg.dk/scanner &
 
 # Wait a bit to make sure the website has booted up
 sleep 8
