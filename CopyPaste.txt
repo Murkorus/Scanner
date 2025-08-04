@@ -4,7 +4,7 @@ After=network-online.target graphical-session.target
 Wants=network-online.target
 
 [Service]
-ExecStart=/bin/bash -c '/home/pi/Scanner/update.sh'
+ExecStart=/bin/bash -c 'until xset q &>/dev/null; do sleep 1; done; sleep 3; /home/pi/Scanner/update.sh'
 Restart=on-failure
 RestartSec=5
 Environment=DISPLAY=:0
