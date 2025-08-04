@@ -13,7 +13,7 @@ python /home/pi/Scanner/backgroundScript.py &
 sleep 5
 
 # Launch the website
-chromium-browser --no-sandbox --start-fullscreen --app=https://sorter.noelg.dk/scanner &
+chromium-browser --no-sandbox --start --app=https://sorter.noelg.dk/scanner &
 
 # Wait a bit to make sure the website has booted up
 sleep 8
