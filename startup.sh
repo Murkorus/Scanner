@@ -16,12 +16,13 @@ echo "$(date): startup.sh passed pinging google.com - Launching chromium" >> /ho
 
 # Launch the website
 chromium-browser \
+  --no-sandbox \
+  --kiosk \
+  --app=https://sorter.noelg.dk/scanner \
+  --disable-features=TranslateUI \
   --disable-gpu \
-  --disable-software-rasterizer \
   --disable-extensions \
-  --disable-sync \
-  --start \
-  --app=https://sorter.noelg.dk/scanner &
+  --start-maximized &
 
 echo "$(date): startup.sh passed starting chromium - Simulating keypresses" >> /home/pi/Desktop/debug.log
 
@@ -36,22 +37,19 @@ sleep 1
 xdotool mousemove 456 50 click 1
 sleep 10
 
-echo "$(date): startup.sh passed mouse click, starting F11 keypresses" >> /home/pi/Desktop/debug.log
+echo "$(date): startup.sh passed mouse click, starting fullscreen function" >> /home/pi/Desktop/debug.log
 
-# Wait for the pop-out camera window to appear
-sleep 2
+# Wait for Chromium to finish all its internal mess (adjust time as needed)
+sleep 12
 
-# Search for the new Chromium window
+# Find the latest visible Chromium window
 CAM_WINDOW=$(xdotool search --onlyvisible --class "chromium" | tail -n 1)
 
-# Focus that window
+# Activate and focus the window
 xdotool windowactivate "$CAM_WINDOW"
 sleep 1
 
-# Send F11 to fullscreen it
+# Send a single F11 to go fullscreen AFTER everything else
 xdotool key --window "$CAM_WINDOW" F11
-sleep 15
-xdotool key --window "$CAM_WINDOW" F11
-sleep 5
-xdotool key --window "$CAM_WINDOW" F11
+
 echo "$(date): startup.sh finished executing - Startup completed, quitting." >> /home/pi/Desktop/debug.log
