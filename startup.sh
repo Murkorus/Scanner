@@ -38,6 +38,7 @@ sleep 1
 
 # Make the popup window fullscreen
 xdotool key F11
+echo "$(date): startup.sh got past first F11 press - pressing again in a bit" >> /home/pi/Desktop/debug.log
 sleep 15
 xdotool key F11
 
