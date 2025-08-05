@@ -14,16 +14,7 @@ sleep 5
 
 echo "$(date): startup.sh passed pinging google.com - Launching chromium" >> /home/pi/Desktop/debug.log
 
-# Launch the website
-nohup chromium-browser \
-  --no-sandbox \
-  --kiosk \
-  --app=https://sorter.noelg.dk/scanner \
-  --disable-features=TranslateUI \
-  --disable-gpu \
-  --disable-extensions \
-  --start-maximized \
-  > /dev/null 2>&1 & disown
+bash /home/pi/Scanner/chromium.sh &
 
 echo "$(date): startup.sh passed starting chromium - Simulating keypresses" >> /home/pi/Desktop/debug.log
 
