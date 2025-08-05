@@ -34,9 +34,9 @@ sleep 1
 
 # Close original website window again so the camera can be used
 xdotool mousemove 456 50 click 1
-# sleep 30
+sleep 10
 
 # Make the popup window fullscreen
-# xdotool key F11
+xdotool key F11
 
 echo "$(date): startup.sh finished executing - Startup completed, quitting." >> /home/pi/Desktop/debug.log
