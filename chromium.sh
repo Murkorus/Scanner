@@ -2,7 +2,6 @@
 sleep 10  # give time for everything else to settle
 
 chromium-browser \
-  --no-sandbox \
   --app=https://sorter.noelg.dk/scanner \
   --disable-gpu \
   --disable-extensions \
