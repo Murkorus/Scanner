@@ -36,21 +36,25 @@ sleep 1
 xdotool mousemove 456 50 click 1
 sleep 10
 
-echo "$(date): startup.sh passed mouse click, starting F11 keypresses" >> /home/pi/Desktop/debug.log
+echo "$(date): startup.sh passed mouse click, starting fullscreen function" >> /home/pi/Desktop/debug.log
 
-# Wait for the pop-out camera window to appear
-sleep 2
+# Wait for the new window to appear
+sleep 3
 
-# Search for the new Chromium window
+# Find the latest visible Chromium window
 CAM_WINDOW=$(xdotool search --onlyvisible --class "chromium" | tail -n 1)
 
-# Focus that window
+# Activate the window
 xdotool windowactivate "$CAM_WINDOW"
 sleep 1
 
-# Send F11 to fullscreen it
-xdotool key --window "$CAM_WINDOW" F11
-sleep 15
-xdotool key --window "$CAM_WINDOW" F11
+# Maximize it (vertically and horizontally)
+wmctrl -i -r "$CAM_WINDOW" -b add,maximized_vert,maximized_horz
+
+# OPTIONAL: Move and resize it manually to exact screen size
+# xdotool windowsize "$CAM_WINDOW" 480 800
+
+# OPTIONAL: Hide window borders if using openbox
+# You can use a chromium flag for that too like --app or --start-fullscreen
 
 echo "$(date): startup.sh finished executing - Startup completed, quitting." >> /home/pi/Desktop/debug.log
