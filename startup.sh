@@ -16,7 +16,6 @@ echo "$(date): startup.sh passed pinging google.com - Launching chromium" >> /ho
 
 # Launch the website
 chromium-browser \
-  --no-sandbox \
   --disable-gpu \
   --disable-software-rasterizer \
   --disable-extensions \
