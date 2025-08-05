@@ -6,5 +6,5 @@ git pull
 
 echo "$(date): update.sh passed GitHub pull, starting startup.sh" >> /home/pi/Desktop/debug.log
 # Run the startup script
-bash /home/pi/Scanner/startup.sh > /home/pi/Desktop/debug.log 2>&1
+bash /home/pi/Scanner/startup.sh
 
