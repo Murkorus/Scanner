@@ -38,5 +38,21 @@ sleep 10
 
 # Make the popup window fullscreen
 xdotool key F11
+sleep 1
+xdotool key F11
+sleep 1
+xdotool key F11
+sleep 1
+xdotool key F11
+sleep 1
+xdotool key F11
+sleep 1
+xdotool key F11
+sleep 1
+xdotool key F11
+sleep 1
+xdotool key F11
+sleep 1
+xdotool key F11
 
 echo "$(date): startup.sh finished executing - Startup completed, quitting." >> /home/pi/Desktop/debug.log
