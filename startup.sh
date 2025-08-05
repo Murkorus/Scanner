@@ -36,9 +36,19 @@ sleep 1
 xdotool mousemove 456 50 click 1
 sleep 10
 
-# Make the popup window fullscreen
-xdotool key F11
-sleep 60
-xdotool key F11
+echo "$(date): startup.sh passed mouse click, starting F11 keypresses" >> /home/pi/Desktop/debug.log
+
+# Wait for the pop-out camera window to appear
+sleep 2
+
+# Search for the new Chromium window
+CAM_WINDOW=$(xdotool search --onlyvisible --class "chromium" | tail -n 1)
+
+# Focus that window
+xdotool windowactivate "$CAM_WINDOW"
+sleep 1
+
+# Send F11 to fullscreen it
+xdotool key --window "$CAM_WINDOW" F11
 
 echo "$(date): startup.sh finished executing - Startup completed, quitting." >> /home/pi/Desktop/debug.log
