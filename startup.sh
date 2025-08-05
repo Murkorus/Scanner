@@ -54,3 +54,4 @@ sleep 1
 xdotool key --window "$CAM_WINDOW" F11
 
 echo "$(date): startup.sh finished executing - Startup completed, quitting." >> /home/pi/Desktop/debug.log
+echo "$(date): test" >> /home/pi/Desktop/debug.log
