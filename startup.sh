@@ -40,7 +40,7 @@ sleep 10
 echo "$(date): startup.sh passed mouse click, starting fullscreen function" >> /home/pi/Desktop/debug.log
 
 # Wait for Chromium to finish all its internal mess (adjust time as needed)
-sleep 12
+sleep 20
 
 # Find the latest visible Chromium window
 CAM_WINDOW=$(xdotool search --onlyvisible --class "chromium" | tail -n 1)
