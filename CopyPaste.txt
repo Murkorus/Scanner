@@ -13,3 +13,5 @@ Environment=XAUTHORITY=/home/pi/.Xauthority
 
 [Install]
 WantedBy=default.target
+
+DISPLAY=:0 XAUTHORITY=/home/pi/.Xauthority /usr/bin/chromium-browser --no-sandbox --disable-gpu --disable-extensions --start-fullscreen --app=https://sorter.noelg.dk/scanner
