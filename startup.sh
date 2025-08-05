@@ -16,12 +16,13 @@ echo "$(date): startup.sh passed pinging google.com - Launching chromium" >> /ho
 
 # Launch the website
 chromium-browser \
+  --no-sandbox \
+  --kiosk \
+  --app=https://sorter.noelg.dk/scanner \
+  --disable-features=TranslateUI \
   --disable-gpu \
-  --disable-software-rasterizer \
   --disable-extensions \
-  --disable-sync \
-  --start \
-  --app=https://sorter.noelg.dk/scanner &
+  --start-maximized &
 
 echo "$(date): startup.sh passed starting chromium - Simulating keypresses" >> /home/pi/Desktop/debug.log
 
