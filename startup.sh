@@ -50,5 +50,7 @@ sleep 1
 
 # Send F11 to fullscreen it
 xdotool key --window "$CAM_WINDOW" F11
+sleep 15
+xdotool key --window "$CAM_WINDOW" F11
 
 echo "$(date): startup.sh finished executing - Startup completed, quitting." >> /home/pi/Desktop/debug.log
