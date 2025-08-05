@@ -22,17 +22,17 @@ echo "$(date): startup.sh passed starting chromium - Simulating keypresses" >> /
 sleep 8
 
 # Open popup menu from website
-xdotool key k
-sleep 1
+#xdotool key k
+#sleep 1
 
 # Close original website window again so the camera can be used
-xdotool mousemove 456 50 click 1
-sleep 10
+#xdotool mousemove 456 50 click 1
+#sleep 10
 
 echo "$(date): startup.sh passed mouse click, starting fullscreen function" >> /home/pi/Desktop/debug.log
 
 # Wait for Chromium to finish all its internal mess (adjust time as needed)
-sleep 20
+sleep 10
 
 # Find the latest visible Chromium window
 CAM_WINDOW=$(xdotool search --onlyvisible --class "chromium" | tail -n 1)
