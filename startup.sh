@@ -16,13 +16,12 @@ echo "$(date): startup.sh passed pinging google.com - Launching chromium" >> /ho
 
 # Launch the website
 chromium-browser \
-  --no-sandbox \
-  --kiosk \
-  --app=https://sorter.noelg.dk/scanner \
-  --disable-features=TranslateUI \
   --disable-gpu \
+  --disable-software-rasterizer \
   --disable-extensions \
-  --start-maximized &
+  --disable-sync \
+  --start \
+  --app=https://sorter.noelg.dk/scanner &
 
 echo "$(date): startup.sh passed starting chromium - Simulating keypresses" >> /home/pi/Desktop/debug.log
 
@@ -37,25 +36,22 @@ sleep 1
 xdotool mousemove 456 50 click 1
 sleep 10
 
-echo "$(date): startup.sh passed mouse click, starting fullscreen function" >> /home/pi/Desktop/debug.log
+echo "$(date): startup.sh passed mouse click, starting F11 keypresses" >> /home/pi/Desktop/debug.log
 
-# Wait for the new window to appear
-sleep 3
+# Wait for the pop-out camera window to appear
+sleep 2
 
-# Find the latest visible Chromium window
+# Search for the new Chromium window
 CAM_WINDOW=$(xdotool search --onlyvisible --class "chromium" | tail -n 1)
 
-# Activate the window
+# Focus that window
 xdotool windowactivate "$CAM_WINDOW"
 sleep 1
 
-# Maximize it (vertically and horizontally)
-wmctrl -i -r "$CAM_WINDOW" -b add,maximized_vert,maximized_horz
-
-# Move and resize it manually to exact screen size
-xdotool windowsize "$CAM_WINDOW" 480 800
-
-# OPTIONAL: Hide window borders if using openbox
-# You can use a chromium flag for that too like --app or --start-fullscreen
-
+# Send F11 to fullscreen it
+xdotool key --window "$CAM_WINDOW" F11
+sleep 15
+xdotool key --window "$CAM_WINDOW" F11
+sleep 5
+xdotool key --window "$CAM_WINDOW" F11
 echo "$(date): startup.sh finished executing - Startup completed, quitting." >> /home/pi/Desktop/debug.log
