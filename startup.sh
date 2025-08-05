@@ -9,7 +9,14 @@ until ping -c1 google.com &>/dev/null; do sleep 1; done
 sleep 5
 
 # Launch the website
-chromium-browser --no-sandbox --disable-gpu --disable-software-rasterizer --disable-accelerated-video-decode --disable-accelerated-2d-canvas --disable-gl-drawing-for-tests --disable-dev-shm-usage --disable-extensions --disable-sync --start --app=https://sorter.noelg.dk/scanner &
+chromium-browser \
+  --no-sandbox \
+  --disable-gpu \
+  --disable-software-rasterizer \
+  --disable-extensions \
+  --disable-sync \
+  --start-fullscreen \
+  --app=https://sorter.noelg.dk/scanner &
 
 # Wait a bit to make sure the website has booted up
 sleep 8

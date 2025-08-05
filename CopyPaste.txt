@@ -1,17 +1,6 @@
-[Unit]
-Description=Startup Script Runner
-After=graphical-session.target network-online.target
-Wants=network-online.target
+# Wait for network just in case
+until ping -c1 google.com &>/dev/null; do sleep 1; done
+sleep 3
 
-[Service]
-Type=simple
-ExecStart=/bin/bash -c 'until xset q &>/dev/null; do sleep 1; done; sleep 3; /home/pi/your-git-pull-and-startup.sh'
-Restart=on-failure
-Environment=DISPLAY=:0
-Environment=XDG_RUNTIME_DIR=/run/user/1000
-Environment=XAUTHORITY=/home/pi/.Xauthority
-
-[Install]
-WantedBy=default.target
-
-DISPLAY=:0 XAUTHORITY=/home/pi/.Xauthority /usr/bin/chromium-browser --no-sandbox --disable-gpu --disable-extensions --start-fullscreen --app=https://sorter.noelg.dk/scanner
+# Start script
+bash /home/pi/Scanner/update.sh
