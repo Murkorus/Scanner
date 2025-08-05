@@ -44,5 +44,4 @@ sleep 1
 # Send a single F11 to go fullscreen AFTER everything else
 xdotool key --window "$CAM_WINDOW" F11
 
-echo "$(date): startup.sh finished executing - Startup completed, quitting." >> /home/pi/Desktop/debug.log
-echo "$(date): test" >> /home/pi/Desktop/debug.log
+echo "$(date): startup.sh finished executing - Startup completed, launching chromium fullscreen fix tool." >> /home/pi/Desktop/debug.log
